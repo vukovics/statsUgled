@@ -6,6 +6,10 @@ let db: Database.Database | null = null;
 export function getDatabase(): Database.Database {
   if (!db) {
     const dbPath = path.join(process.cwd(), 'database', 'sales.db');
+    console.log('Database path:', dbPath);
+    console.log('File exists:', require('fs').existsSync(dbPath));
+    console.log('CWD:', process.cwd());
+    console.log('Files in CWD:', require('fs').readdirSync(process.cwd()));
     db = new Database(dbPath, { readonly: true, fileMustExist: true });
   }
   return db;
