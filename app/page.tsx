@@ -14,8 +14,8 @@ interface Sale {
   revenue: number;
 }
 
-export default function Home() {
-  const sales = query<Sale>('SELECT * FROM sales ORDER BY datum DESC LIMIT 10');
+export default async function Home() {
+  const sales = await query<Sale>('SELECT * FROM sales ORDER BY datum DESC LIMIT 10');
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black p-8">
