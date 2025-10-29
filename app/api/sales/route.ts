@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const limit = searchParams.get('limit') || '10';
 
-    const sales = query<Sale>(
+    const sales = await query<Sale>(
       'SELECT * FROM sales ORDER BY datum DESC LIMIT ?',
       [parseInt(limit)]
     );

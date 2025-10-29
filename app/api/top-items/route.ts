@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const topItems = query<TopItem>(
+    const topItems = await query<TopItem>(
       `SELECT
         sifra_art,
         naziv_art,

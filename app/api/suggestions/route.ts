@@ -83,7 +83,7 @@ export async function GET(request: NextRequest) {
 
     for (const [startStr, endStr, year] of historicalRanges) {
       // Convert DD.MM.YYYY to YYYY-MM-DD for proper comparison
-      const yearData = query<HistoricalSale>(
+      const yearData = await query<HistoricalSale>(
         `SELECT
           sifra_art,
           naziv_art,

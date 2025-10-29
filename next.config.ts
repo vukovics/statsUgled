@@ -2,7 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
-    '/api/**': ['./database/**'],
+    '/api/**': [
+      './database/**',
+      './node_modules/sql.js/dist/**',
+    ],
   },
 };
 
