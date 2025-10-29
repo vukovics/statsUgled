@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# sqlite wal files (not needed in readonly mode)
+*.db-shm
+*.db-wal

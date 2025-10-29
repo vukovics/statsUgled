@@ -6,8 +6,7 @@ let db: Database.Database | null = null;
 export function getDatabase(): Database.Database {
   if (!db) {
     const dbPath = path.join(process.cwd(), 'database', 'sales.db');
-    db = new Database(dbPath);
-    db.pragma('journal_mode = WAL');
+    db = new Database(dbPath, { readonly: true, fileMustExist: true });
   }
   return db;
 }
