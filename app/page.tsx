@@ -26,6 +26,12 @@ export default async function Home() {
           </h1>
           <div className="flex gap-3">
             <Link
+              href="/product-analytics"
+              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors font-medium"
+            >
+              Analitika proizvoda
+            </Link>
+            <Link
               href="/sales-trends"
               className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors font-medium"
             >
@@ -77,7 +83,7 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
           <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
             <h2 className="text-lg font-semibold mb-2 text-blue-900 dark:text-blue-100">Nedavne prodaje</h2>
             <p className="text-blue-800 dark:text-blue-200">
@@ -85,6 +91,16 @@ export default async function Home() {
             </p>
             <p className="text-sm text-blue-700 dark:text-blue-300 mt-2">
               API endpoint: <code className="bg-blue-100 dark:bg-blue-800 px-2 py-1 rounded">/api/sales</code>
+            </p>
+          </div>
+
+          <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
+            <h2 className="text-lg font-semibold mb-2 text-indigo-900 dark:text-indigo-100">Analitika proizvoda</h2>
+            <p className="text-indigo-800 dark:text-indigo-200">
+              Sezonalnost, najprodavaniji i sporoprometni proizvodi
+            </p>
+            <p className="text-sm text-indigo-700 dark:text-indigo-300 mt-2">
+              API endpoint: <code className="bg-indigo-100 dark:bg-indigo-800 px-2 py-1 rounded">/api/product-analytics</code>
             </p>
           </div>
 

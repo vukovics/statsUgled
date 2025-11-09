@@ -124,6 +124,12 @@ export default function SalesTrendsPage() {
           </h1>
           <div className="flex gap-3">
             <Link
+              href="/product-analytics"
+              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+            >
+              Analitika proizvoda
+            </Link>
+            <Link
               href="/top-items"
               className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
             >
