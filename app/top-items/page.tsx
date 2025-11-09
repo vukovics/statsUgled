@@ -68,54 +68,56 @@ export default function TopItemsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black p-8">
+    <div className="min-h-screen bg-zinc-50 dark:bg-black p-4 md:p-8">
       <main className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold text-black dark:text-white">
+        <div className="mb-6 md:mb-8">
+          <h1 className="text-2xl md:text-4xl font-bold text-black dark:text-white mb-4">
             Najprodavaniji artikli
           </h1>
-          <div className="flex gap-3">
+          <div className="grid grid-cols-2 md:flex md:flex-wrap gap-2 md:gap-3">
             <Link
               href="/product-analytics"
-              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+              className="px-3 py-2 md:px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors text-sm md:text-base text-center"
             >
-              Analitika proizvoda
+              Analitika
             </Link>
             <Link
               href="/sales-trends"
-              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors"
+              className="px-3 py-2 md:px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors text-sm md:text-base text-center"
             >
-              Trendovi prodaje
+              Trendovi
             </Link>
             <Link
               href="/suggestions"
-              className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
+              className="px-3 py-2 md:px-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors text-sm md:text-base text-center"
             >
-              Preporuke za narudžbu
+              Preporuke
             </Link>
             <Link
               href="/"
-              className="px-4 py-2 bg-zinc-800 dark:bg-zinc-700 text-white rounded-lg hover:bg-zinc-700 dark:hover:bg-zinc-600 transition-colors"
+              className="px-3 py-2 md:px-4 bg-zinc-800 dark:bg-zinc-700 text-white rounded-lg hover:bg-zinc-700 dark:hover:bg-zinc-600 transition-colors text-sm md:text-base text-center"
             >
-              Kontrolna tabla
+              Početna
             </Link>
           </div>
         </div>
 
-        <div className="mb-6 flex items-center gap-4">
-          <label htmlFor="date" className="text-lg font-medium text-black dark:text-white">
+        <div className="mb-4 md:mb-6 flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
+          <label htmlFor="date" className="text-base md:text-lg font-medium text-black dark:text-white">
             Odaberite datum:
           </label>
-          <input
-            type="date"
-            id="date"
-            value={getInputDate()}
-            onChange={handleDateChange}
-            className="px-4 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-white dark:bg-zinc-900 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <span className="text-sm text-zinc-600 dark:text-zinc-400">
-            ({date})
-          </span>
+          <div className="flex items-center gap-2 md:gap-4">
+            <input
+              type="date"
+              id="date"
+              value={getInputDate()}
+              onChange={handleDateChange}
+              className="px-3 md:px-4 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg bg-white dark:bg-zinc-900 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base"
+            />
+            <span className="text-xs md:text-sm text-zinc-600 dark:text-zinc-400">
+              ({date})
+            </span>
+          </div>
         </div>
 
         {loading && (
@@ -142,17 +144,17 @@ export default function TopItemsPage() {
         {!loading && !error && topItems.length > 0 && (
           <>
             <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-lg overflow-hidden mb-6">
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto touch-pan-x">
                 <table className="w-full">
                   <thead className="bg-zinc-100 dark:bg-zinc-800">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Rang</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Šifra artikla</th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Naziv artikla</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Ukupna količina</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Ukupan prihod</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Broj prodaja</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Prosječna cijena</th>
+                      <th className="px-4 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Rang</th>
+                      <th className="px-4 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Šifra artikla</th>
+                      <th className="px-4 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Naziv artikla</th>
+                      <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Ukupna količina</th>
+                      <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Ukupan prihod</th>
+                      <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Broj prodaja</th>
+                      <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Prosječna cijena</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-zinc-200 dark:divide-zinc-700">
@@ -163,25 +165,25 @@ export default function TopItemsPage() {
                           index === 0 ? 'bg-yellow-50 dark:bg-yellow-900/10' : ''
                         }`}
                       >
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm font-bold text-zinc-900 dark:text-zinc-100">
                           {index === 0 && '🏆 '}#{index + 1}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-zinc-900 dark:text-zinc-100">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-zinc-900 dark:text-zinc-100">
                           {item.sifra_art}
                         </td>
-                        <td className="px-6 py-4 text-sm text-zinc-900 dark:text-zinc-100">
+                        <td className="px-4 md:px-6 py-3 md:py-4 text-sm text-zinc-900 dark:text-zinc-100">
                           {item.naziv_art}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right font-semibold text-zinc-900 dark:text-zinc-100">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right font-semibold text-zinc-900 dark:text-zinc-100">
                           {item.total_quantity.toFixed(2)}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right font-semibold text-green-600 dark:text-green-400">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right font-semibold text-green-600 dark:text-green-400">
                           {item.total_revenue.toFixed(2)} KM
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-zinc-900 dark:text-zinc-100">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right text-zinc-900 dark:text-zinc-100">
                           {item.sale_count}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-zinc-900 dark:text-zinc-100">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right text-zinc-900 dark:text-zinc-100">
                           {item.avg_price.toFixed(2)} KM
                         </td>
                       </tr>
@@ -192,25 +194,25 @@ export default function TopItemsPage() {
             </div>
 
             <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
-              <h2 className="text-lg font-semibold mb-2 text-blue-900 dark:text-blue-100">
+              <h2 className="text-base md:text-lg font-semibold mb-2 text-blue-900 dark:text-blue-100">
                 Pregled za {date}
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                <div className="bg-white dark:bg-blue-900/30 rounded-lg p-4">
-                  <p className="text-sm text-blue-700 dark:text-blue-300">Ukupno artikala</p>
-                  <p className="text-2xl font-bold text-blue-900 dark:text-blue-100">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mt-3 md:mt-4">
+                <div className="bg-white dark:bg-blue-900/30 rounded-lg p-3 md:p-4">
+                  <p className="text-xs md:text-sm text-blue-700 dark:text-blue-300">Ukupno artikala</p>
+                  <p className="text-lg md:text-2xl font-bold text-blue-900 dark:text-blue-100">
                     {topItems.length}
                   </p>
                 </div>
-                <div className="bg-white dark:bg-blue-900/30 rounded-lg p-4">
-                  <p className="text-sm text-blue-700 dark:text-blue-300">Ukupno prodato</p>
-                  <p className="text-2xl font-bold text-blue-900 dark:text-blue-100">
+                <div className="bg-white dark:bg-blue-900/30 rounded-lg p-3 md:p-4">
+                  <p className="text-xs md:text-sm text-blue-700 dark:text-blue-300">Ukupno prodato</p>
+                  <p className="text-lg md:text-2xl font-bold text-blue-900 dark:text-blue-100">
                     {topItems.reduce((sum, item) => sum + item.total_quantity, 0).toFixed(2)}
                   </p>
                 </div>
-                <div className="bg-white dark:bg-blue-900/30 rounded-lg p-4">
-                  <p className="text-sm text-blue-700 dark:text-blue-300">Ukupan prihod</p>
-                  <p className="text-2xl font-bold text-green-600 dark:text-green-400">
+                <div className="bg-white dark:bg-blue-900/30 rounded-lg p-3 md:p-4 col-span-2 md:col-span-1">
+                  <p className="text-xs md:text-sm text-blue-700 dark:text-blue-300">Ukupan prihod</p>
+                  <p className="text-lg md:text-2xl font-bold text-green-600 dark:text-green-400 break-words">
                     {topItems.reduce((sum, item) => sum + item.total_revenue, 0).toFixed(2)} KM
                   </p>
                 </div>

@@ -115,47 +115,47 @@ export default function SalesTrendsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black p-8">
+    <div className="min-h-screen bg-zinc-50 dark:bg-black p-4 md:p-8">
       <main className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold text-black dark:text-white">
+        <div className="mb-6 md:mb-8">
+          <h1 className="text-2xl md:text-4xl font-bold text-black dark:text-white mb-4">
             Trendovi prodaje
           </h1>
-          <div className="flex gap-3">
+          <div className="grid grid-cols-2 md:flex md:flex-wrap gap-2 md:gap-3">
             <Link
               href="/product-analytics"
-              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+              className="px-3 py-2 md:px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors text-sm md:text-base text-center"
             >
-              Analitika proizvoda
+              Analitika
             </Link>
             <Link
               href="/top-items"
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+              className="px-3 py-2 md:px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm md:text-base text-center"
             >
-              Najprodavaniji artikli
+              Top artikli
             </Link>
             <Link
               href="/suggestions"
-              className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
+              className="px-3 py-2 md:px-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors text-sm md:text-base text-center"
             >
-              Preporuke za narudžbu
+              Preporuke
             </Link>
             <Link
               href="/"
-              className="px-4 py-2 bg-zinc-800 dark:bg-zinc-700 text-white rounded-lg hover:bg-zinc-700 dark:hover:bg-zinc-600 transition-colors"
+              className="px-3 py-2 md:px-4 bg-zinc-800 dark:bg-zinc-700 text-white rounded-lg hover:bg-zinc-700 dark:hover:bg-zinc-600 transition-colors text-sm md:text-base text-center"
             >
-              Kontrolna tabla
+              Početna
             </Link>
           </div>
         </div>
 
         {/* Info Box */}
-        <div className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20 rounded-lg p-6 mb-6 border border-blue-200 dark:border-blue-800">
-          <h2 className="text-lg font-semibold mb-3 text-blue-900 dark:text-blue-100">
+        <div className="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-900/20 dark:to-green-900/20 rounded-lg p-4 md:p-6 mb-4 md:mb-6 border border-blue-200 dark:border-blue-800">
+          <h2 className="text-base md:text-lg font-semibold mb-2 md:mb-3 text-blue-900 dark:text-blue-100">
             📈 Analiza trendova prodaje
           </h2>
-          <div className="text-sm text-blue-800 dark:text-blue-200 space-y-2">
+          <div className="text-xs md:text-sm text-blue-800 dark:text-blue-200 space-y-1 md:space-y-2">
             <p>
               <strong>Dnevni trendovi:</strong> Detaljni pregled prodaje po danima sa pomičnim prosjekom (7 i 30 dana) za uočavanje kratkoročnih trendova.
             </p>
@@ -169,11 +169,11 @@ export default function SalesTrendsPage() {
         </div>
 
         {/* Controls */}
-        <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-lg p-6 mb-6">
-          <h2 className="text-xl font-semibold mb-4 text-black dark:text-white">
+        <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-lg p-4 md:p-6 mb-4 md:mb-6">
+          <h2 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-black dark:text-white">
             Postavke analize
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-3 md:mb-4">
             <div>
               <label htmlFor="period" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
                 Period agregacije
@@ -219,39 +219,39 @@ export default function SalesTrendsPage() {
           </div>
 
           {/* View Mode Tabs */}
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setViewMode('trends')}
-              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+              className={`px-3 md:px-4 py-2 rounded-lg font-medium transition-colors text-sm md:text-base ${
                 viewMode === 'trends'
                   ? 'bg-blue-600 text-white'
                   : 'bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-600'
               }`}
             >
-              {getPeriodLabel(period)} trendovi
+              {getPeriodLabel(period)}
             </button>
             {(period === 'monthly' || period === 'yearly') && (
               <button
                 onClick={() => setViewMode('yoy')}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                className={`px-3 md:px-4 py-2 rounded-lg font-medium transition-colors text-sm md:text-base ${
                   viewMode === 'yoy'
                     ? 'bg-blue-600 text-white'
                     : 'bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-600'
                 }`}
               >
-                Poređenje godina
+                God/God
               </button>
             )}
             {period === 'daily' && (
               <button
                 onClick={() => setViewMode('moving')}
-                className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                className={`px-3 md:px-4 py-2 rounded-lg font-medium transition-colors text-sm md:text-base ${
                   viewMode === 'moving'
                     ? 'bg-blue-600 text-white'
                     : 'bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-300 dark:hover:bg-zinc-600'
                 }`}
               >
-                Pomični prosjek
+                Prosjek
               </button>
             )}
           </div>
@@ -272,31 +272,31 @@ export default function SalesTrendsPage() {
 
         {/* Summary Cards */}
         {!loading && !error && data && (
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-              <p className="text-sm text-blue-700 dark:text-blue-300 mb-1">Ukupan prihod</p>
-              <p className="text-2xl font-bold text-blue-900 dark:text-blue-100">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-4 md:mb-6">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-900/20 rounded-lg p-3 md:p-4 border border-blue-200 dark:border-blue-800">
+              <p className="text-xs md:text-sm text-blue-700 dark:text-blue-300 mb-1">Ukupan prihod</p>
+              <p className="text-lg md:text-2xl font-bold text-blue-900 dark:text-blue-100 break-words">
                 {formatCurrency(data.summary.total_revenue)}
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-900/20 rounded-lg p-4 border border-green-200 dark:border-green-800">
-              <p className="text-sm text-green-700 dark:text-green-300 mb-1">Ukupna količina</p>
-              <p className="text-2xl font-bold text-green-900 dark:text-green-100">
+            <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-900/20 rounded-lg p-3 md:p-4 border border-green-200 dark:border-green-800">
+              <p className="text-xs md:text-sm text-green-700 dark:text-green-300 mb-1">Ukupna količina</p>
+              <p className="text-lg md:text-2xl font-bold text-green-900 dark:text-green-100">
                 {formatNumber(data.summary.total_quantity)}
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-900/20 rounded-lg p-4 border border-purple-200 dark:border-purple-800">
-              <p className="text-sm text-purple-700 dark:text-purple-300 mb-1">Prosjek po periodu</p>
-              <p className="text-2xl font-bold text-purple-900 dark:text-purple-100">
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-900/20 rounded-lg p-3 md:p-4 border border-purple-200 dark:border-purple-800">
+              <p className="text-xs md:text-sm text-purple-700 dark:text-purple-300 mb-1">Prosjek</p>
+              <p className="text-lg md:text-2xl font-bold text-purple-900 dark:text-purple-100 break-words">
                 {formatCurrency(data.summary.avg_revenue_per_period)}
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-900/30 dark:to-amber-900/20 rounded-lg p-4 border border-amber-200 dark:border-amber-800">
-              <p className="text-sm text-amber-700 dark:text-amber-300 mb-1">Broj perioda</p>
-              <p className="text-2xl font-bold text-amber-900 dark:text-amber-100">
+            <div className="bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-900/30 dark:to-amber-900/20 rounded-lg p-3 md:p-4 border border-amber-200 dark:border-amber-800">
+              <p className="text-xs md:text-sm text-amber-700 dark:text-amber-300 mb-1">Perioda</p>
+              <p className="text-lg md:text-2xl font-bold text-amber-900 dark:text-amber-100">
                 {data.summary.periods_count}
               </p>
             </div>
@@ -306,28 +306,28 @@ export default function SalesTrendsPage() {
         {/* Trends Table */}
         {!loading && !error && data && viewMode === 'trends' && (
           <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-lg overflow-hidden mb-6">
-            <div className="px-6 py-4 bg-zinc-100 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700">
-              <h2 className="text-xl font-semibold text-black dark:text-white">
+            <div className="px-4 md:px-6 py-3 md:py-4 bg-zinc-100 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700">
+              <h2 className="text-lg md:text-xl font-semibold text-black dark:text-white">
                 {getPeriodLabel(period)} pregled prodaje
               </h2>
             </div>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto touch-pan-x">
               <table className="w-full">
                 <thead className="bg-zinc-50 dark:bg-zinc-800/50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
                       Period
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
                       Ukupan prihod
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
                       Ukupna količina
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
                       Broj transakcija
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
                       Prosječna cijena
                     </th>
                   </tr>
@@ -335,19 +335,19 @@ export default function SalesTrendsPage() {
                 <tbody className="divide-y divide-zinc-200 dark:divide-zinc-700">
                   {data.data.map((row, index) => (
                     <tr key={index} className="hover:bg-zinc-50 dark:hover:bg-zinc-800">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                      <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm font-medium text-zinc-900 dark:text-zinc-100">
                         {row.period}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right font-semibold text-green-600 dark:text-green-400">
+                      <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right font-semibold text-green-600 dark:text-green-400">
                         {formatCurrency(row.total_revenue)}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-zinc-900 dark:text-zinc-100">
+                      <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right text-zinc-900 dark:text-zinc-100">
                         {formatNumber(row.total_quantity)}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-zinc-900 dark:text-zinc-100">
+                      <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right text-zinc-900 dark:text-zinc-100">
                         {row.sale_count}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-zinc-900 dark:text-zinc-100">
+                      <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right text-zinc-900 dark:text-zinc-100">
                         {formatCurrency(row.avg_price)}
                       </td>
                     </tr>
@@ -361,31 +361,31 @@ export default function SalesTrendsPage() {
         {/* Year-over-Year Comparison */}
         {!loading && !error && data && viewMode === 'yoy' && data.yoyComparison.length > 0 && (
           <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-lg overflow-hidden mb-6">
-            <div className="px-6 py-4 bg-zinc-100 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700">
-              <h2 className="text-xl font-semibold text-black dark:text-white">
+            <div className="px-4 md:px-6 py-3 md:py-4 bg-zinc-100 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700">
+              <h2 className="text-lg md:text-xl font-semibold text-black dark:text-white">
                 Poređenje godina - Rast/Pad prodaje
               </h2>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+              <p className="text-xs md:text-sm text-zinc-600 dark:text-zinc-400 mt-1">
                 Analiza promjene prihoda u odnosu na prethodnu godinu za isti period
               </p>
             </div>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto touch-pan-x">
               <table className="w-full">
                 <thead className="bg-zinc-50 dark:bg-zinc-800/50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
                       Period
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
                       Tekuća godina
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
                       Prethodna godina
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
                       Promjena
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
                       Rast %
                     </th>
                   </tr>
@@ -395,21 +395,21 @@ export default function SalesTrendsPage() {
                     const change = row.current_revenue - row.previous_revenue;
                     return (
                       <tr key={index} className={`hover:bg-zinc-50 dark:hover:bg-zinc-800 ${getGrowthBgColor(row.growth_percent)}`}>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm font-medium text-zinc-900 dark:text-zinc-100">
                           {row.period}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-zinc-900 dark:text-zinc-100">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right text-zinc-900 dark:text-zinc-100">
                           <div className="font-semibold">{formatCurrency(row.current_revenue)}</div>
                           <div className="text-xs text-zinc-500">({row.current_year})</div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-zinc-600 dark:text-zinc-400">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right text-zinc-600 dark:text-zinc-400">
                           <div>{formatCurrency(row.previous_revenue)}</div>
                           <div className="text-xs text-zinc-500">({row.previous_year})</div>
                         </td>
-                        <td className={`px-6 py-4 whitespace-nowrap text-sm text-right font-semibold ${getGrowthColor(change)}`}>
+                        <td className={`px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right font-semibold ${getGrowthColor(change)}`}>
                           {change >= 0 ? '+' : ''}{formatCurrency(change)}
                         </td>
-                        <td className={`px-6 py-4 whitespace-nowrap text-sm text-right font-bold ${getGrowthColor(row.growth_percent)}`}>
+                        <td className={`px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right font-bold ${getGrowthColor(row.growth_percent)}`}>
                           <span className="flex items-center justify-end gap-1">
                             {row.growth_percent >= 0 ? '↑' : '↓'}
                             {Math.abs(row.growth_percent).toFixed(1)}%
@@ -427,28 +427,28 @@ export default function SalesTrendsPage() {
         {/* Moving Averages */}
         {!loading && !error && data && viewMode === 'moving' && data.movingAverages.length > 0 && (
           <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-lg overflow-hidden mb-6">
-            <div className="px-6 py-4 bg-zinc-100 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700">
-              <h2 className="text-xl font-semibold text-black dark:text-white">
+            <div className="px-4 md:px-6 py-3 md:py-4 bg-zinc-100 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-700">
+              <h2 className="text-lg md:text-xl font-semibold text-black dark:text-white">
                 Pomični prosjek prihoda
               </h2>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+              <p className="text-xs md:text-sm text-zinc-600 dark:text-zinc-400 mt-1">
                 7-dnevni i 30-dnevni pomični prosjek pomaže uočiti trendove bez dnevnih fluktuacija
               </p>
             </div>
-            <div className="overflow-x-auto max-h-[600px]">
+            <div className="overflow-x-auto touch-pan-x max-h-[600px]">
               <table className="w-full">
                 <thead className="bg-zinc-50 dark:bg-zinc-800/50 sticky top-0">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
                       Datum
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
                       Dnevni prihod
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
                       MA 7 dana
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">
                       MA 30 dana
                     </th>
                   </tr>
@@ -456,16 +456,16 @@ export default function SalesTrendsPage() {
                 <tbody className="divide-y divide-zinc-200 dark:divide-zinc-700">
                   {data.movingAverages.slice(-60).map((row, index) => (
                     <tr key={index} className="hover:bg-zinc-50 dark:hover:bg-zinc-800">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                      <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm font-medium text-zinc-900 dark:text-zinc-100">
                         {row.date}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-zinc-900 dark:text-zinc-100">
+                      <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right text-zinc-900 dark:text-zinc-100">
                         {formatCurrency(row.daily_revenue)}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right font-semibold text-blue-600 dark:text-blue-400">
+                      <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right font-semibold text-blue-600 dark:text-blue-400">
                         {formatCurrency(row.ma_7day)}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right font-semibold text-purple-600 dark:text-purple-400">
+                      <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right font-semibold text-purple-600 dark:text-purple-400">
                         {formatCurrency(row.ma_30day)}
                       </td>
                     </tr>
@@ -474,7 +474,7 @@ export default function SalesTrendsPage() {
               </table>
             </div>
             {data.movingAverages.length > 60 && (
-              <div className="px-6 py-3 bg-amber-50 dark:bg-amber-900/20 text-sm text-amber-800 dark:text-amber-200 text-center">
+              <div className="px-4 md:px-6 py-2 md:py-3 bg-amber-50 dark:bg-amber-900/20 text-xs md:text-sm text-amber-800 dark:text-amber-200 text-center">
                 Prikazanih posljednjih 60 dana od ukupno {data.movingAverages.length} dana
               </div>
             )}
@@ -483,11 +483,11 @@ export default function SalesTrendsPage() {
 
         {/* Empty State */}
         {!loading && !error && data && data.data.length === 0 && (
-          <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-yellow-900 dark:text-yellow-100 mb-3">
+          <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 md:p-6">
+            <h3 className="text-base md:text-lg font-semibold text-yellow-900 dark:text-yellow-100 mb-2 md:mb-3">
               Nema podataka za odabrani period
             </h3>
-            <p className="text-sm text-yellow-800 dark:text-yellow-200">
+            <p className="text-xs md:text-sm text-yellow-800 dark:text-yellow-200">
               Pokušajte odabrati drugi vremenski raspon ili period agregacije.
             </p>
           </div>

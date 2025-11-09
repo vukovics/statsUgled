@@ -132,46 +132,46 @@ export default function SuggestionsPage() {
   );
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black p-8">
+    <div className="min-h-screen bg-zinc-50 dark:bg-black p-4 md:p-8">
       <main className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold text-black dark:text-white">
+        <div className="mb-6 md:mb-8">
+          <h1 className="text-2xl md:text-4xl font-bold text-black dark:text-white mb-4">
             Preporuke za narudžbu
           </h1>
-          <div className="flex gap-3">
+          <div className="grid grid-cols-2 md:flex md:flex-wrap gap-2 md:gap-3">
             <Link
               href="/product-analytics"
-              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors"
+              className="px-3 py-2 md:px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors text-sm md:text-base text-center"
             >
-              Analitika proizvoda
+              Analitika
             </Link>
             <Link
               href="/sales-trends"
-              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors"
+              className="px-3 py-2 md:px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors text-sm md:text-base text-center"
             >
-              Trendovi prodaje
+              Trendovi
             </Link>
             <Link
               href="/top-items"
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+              className="px-3 py-2 md:px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm md:text-base text-center"
             >
-              Najprodavaniji artikli
+              Top artikli
             </Link>
             <Link
               href="/"
-              className="px-4 py-2 bg-zinc-800 dark:bg-zinc-700 text-white rounded-lg hover:bg-zinc-700 dark:hover:bg-zinc-600 transition-colors"
+              className="px-3 py-2 md:px-4 bg-zinc-800 dark:bg-zinc-700 text-white rounded-lg hover:bg-zinc-700 dark:hover:bg-zinc-600 transition-colors text-sm md:text-base text-center"
             >
-              Kontrolna tabla
+              Početna
             </Link>
           </div>
         </div>
 
         {/* Info Box */}
-        <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg p-6 mb-6 border border-purple-200 dark:border-purple-800">
-          <h2 className="text-lg font-semibold mb-3 text-purple-900 dark:text-purple-100">
+        <div className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg p-4 md:p-6 mb-4 md:mb-6 border border-purple-200 dark:border-purple-800">
+          <h2 className="text-base md:text-lg font-semibold mb-2 md:mb-3 text-purple-900 dark:text-purple-100">
             📊 Kako ovo funkcioniše - Predviđanje budućih narudžbi
           </h2>
-          <div className="text-sm text-purple-800 dark:text-purple-200 space-y-2">
+          <div className="text-xs md:text-sm text-purple-800 dark:text-purple-200 space-y-1 md:space-y-2">
             <p>
               <strong>Korak 1:</strong> Odaberite DANAŠNJI DATUM (ili bilo koji budući datum) i broj dana za predviđanje (npr. danas + narednih 10 dana).
             </p>
@@ -197,11 +197,11 @@ export default function SuggestionsPage() {
         </div>
 
         {/* Configuration Panel */}
-        <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-lg p-6 mb-6">
-          <h2 className="text-xl font-semibold mb-4 text-black dark:text-white">
+        <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-lg p-4 md:p-6 mb-4 md:mb-6">
+          <h2 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-black dark:text-white">
             Postavke predviđanja
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4">
             <div>
               <label htmlFor="startDate" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
                 Početni datum
@@ -265,33 +265,33 @@ export default function SuggestionsPage() {
 
         {/* Analysis Summary */}
         {analysis && !loading && (
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg shadow-lg p-6 mb-6">
-            <h2 className="text-xl font-semibold mb-4 text-black dark:text-white">
+          <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg shadow-lg p-4 md:p-6 mb-4 md:mb-6">
+            <h2 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-black dark:text-white">
               Pregled analize
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
-              <div className="bg-white dark:bg-zinc-900 rounded-lg p-4">
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">Period predviđanja</p>
-                <p className="text-lg font-bold text-black dark:text-white">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-3 md:mb-4">
+              <div className="bg-white dark:bg-zinc-900 rounded-lg p-3 md:p-4 col-span-2 lg:col-span-1">
+                <p className="text-xs md:text-sm text-zinc-600 dark:text-zinc-400">Period predviđanja</p>
+                <p className="text-base md:text-lg font-bold text-black dark:text-white">
                   {analysis.prediction_start_date}
                 </p>
-                <p className="text-sm text-zinc-500 dark:text-zinc-500">do {analysis.prediction_end_date}</p>
+                <p className="text-xs md:text-sm text-zinc-500 dark:text-zinc-500">do {analysis.prediction_end_date}</p>
               </div>
-              <div className="bg-white dark:bg-zinc-900 rounded-lg p-4">
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">Ukupno artikala</p>
-                <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+              <div className="bg-white dark:bg-zinc-900 rounded-lg p-3 md:p-4">
+                <p className="text-xs md:text-sm text-zinc-600 dark:text-zinc-400">Ukupno artikala</p>
+                <p className="text-lg md:text-2xl font-bold text-blue-600 dark:text-blue-400">
                   {filteredSuggestions.length}
                 </p>
               </div>
-              <div className="bg-white dark:bg-zinc-900 rounded-lg p-4">
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">Ukupno jedinica za naručiti</p>
-                <p className="text-2xl font-bold text-green-600 dark:text-green-400">
+              <div className="bg-white dark:bg-zinc-900 rounded-lg p-3 md:p-4">
+                <p className="text-xs md:text-sm text-zinc-600 dark:text-zinc-400">Ukupno jedinica za naručiti</p>
+                <p className="text-lg md:text-2xl font-bold text-green-600 dark:text-green-400">
                   {totalSuggestedQuantity.toFixed(0)}
                 </p>
               </div>
-              <div className="bg-white dark:bg-zinc-900 rounded-lg p-4">
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">Procijenjeni trošak</p>
-                <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">
+              <div className="bg-white dark:bg-zinc-900 rounded-lg p-3 md:p-4">
+                <p className="text-xs md:text-sm text-zinc-600 dark:text-zinc-400">Procijenjeni trošak</p>
+                <p className="text-lg md:text-2xl font-bold text-purple-600 dark:text-purple-400 break-words">
                   {totalEstimatedCost.toFixed(2)} KM
                 </p>
               </div>
@@ -340,20 +340,20 @@ export default function SuggestionsPage() {
         {/* Suggestions Table */}
         {!loading && !error && filteredSuggestions.length > 0 && (
           <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-lg overflow-hidden">
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto touch-pan-x">
               <table className="w-full">
                 <thead className="bg-zinc-100 dark:bg-zinc-800">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider"></th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">#</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Šifra artikla</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Naziv artikla</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Preporučena narudžba</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Prosjek/Dan</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Prosječna cijena</th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Procijenjeni trošak</th>
-                    <th className="px-6 py-3 text-center text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Godine</th>
-                    <th className="px-6 py-3 text-center text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Pouzdanost</th>
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider"></th>
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">#</th>
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Šifra artikla</th>
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Naziv artikla</th>
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Preporučena narudžba</th>
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Prosjek/Dan</th>
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Prosječna cijena</th>
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-right text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Procijenjeni trošak</th>
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-center text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Godine</th>
+                    <th className="px-4 md:px-6 py-2 md:py-3 text-center text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Pouzdanost</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-zinc-200 dark:divide-zinc-700">
@@ -366,37 +366,37 @@ export default function SuggestionsPage() {
                         }`}
                         onClick={() => setExpandedRow(expandedRow === item.sifra_art ? null : item.sifra_art)}
                       >
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-zinc-900 dark:text-zinc-100">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-zinc-900 dark:text-zinc-100">
                           <span className="text-lg">{expandedRow === item.sifra_art ? '▼' : '▶'}</span>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm font-bold text-zinc-900 dark:text-zinc-100">
                           {index === 0 && '🥇 '}
                           {index === 1 && '🥈 '}
                           {index === 2 && '🥉 '}
                           {index + 1}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-zinc-900 dark:text-zinc-100">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-zinc-900 dark:text-zinc-100">
                           {item.sifra_art}
                         </td>
-                        <td className="px-6 py-4 text-sm text-zinc-900 dark:text-zinc-100">
+                        <td className="px-4 md:px-6 py-3 md:py-4 text-sm text-zinc-900 dark:text-zinc-100">
                           {item.naziv_art}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right font-bold text-green-600 dark:text-green-400">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right font-bold text-green-600 dark:text-green-400">
                           {item.suggested_order_quantity}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-zinc-600 dark:text-zinc-400">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right text-zinc-600 dark:text-zinc-400">
                           {item.avg_daily_quantity.toFixed(2)}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right text-zinc-900 dark:text-zinc-100">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right text-zinc-900 dark:text-zinc-100">
                           {item.avg_price.toFixed(2)} KM
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right font-semibold text-purple-600 dark:text-purple-400">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-right font-semibold text-purple-600 dark:text-purple-400">
                           {(item.suggested_order_quantity * item.avg_price).toFixed(2)} KM
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-zinc-900 dark:text-zinc-100">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-sm text-center text-zinc-900 dark:text-zinc-100">
                           {item.years_analyzed}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                        <td className="px-4 md:px-6 py-3 md:py-4 whitespace-nowrap text-center">
                           <span className={`px-2 py-1 text-xs font-semibold rounded-full ${getConfidenceBadge(item.confidence)}`}>
                             {item.confidence.toUpperCase()}
                           </span>
@@ -404,12 +404,12 @@ export default function SuggestionsPage() {
                       </tr>
                       {expandedRow === item.sifra_art && (
                         <tr key={`${item.sifra_art}-details`} className="bg-blue-50 dark:bg-blue-900/10">
-                          <td colSpan={10} className="px-6 py-4">
-                            <div className="text-sm">
-                              <h4 className="font-semibold mb-3 text-blue-900 dark:text-blue-100">
+                          <td colSpan={10} className="px-4 md:px-6 py-3 md:py-4">
+                            <div className="text-xs md:text-sm">
+                              <h4 className="font-semibold mb-2 md:mb-3 text-blue-900 dark:text-blue-100">
                                 Raščlamba istorijskih podataka (Isti period od {days} dana u prethodnim godinama)
                               </h4>
-                              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3">
                                 {item.yearly_breakdown.map((yearData) => (
                                   <div
                                     key={yearData.year}
@@ -457,11 +457,11 @@ export default function SuggestionsPage() {
         )}
 
         {!loading && !error && filteredSuggestions.length === 0 && (
-          <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-yellow-900 dark:text-yellow-100 mb-3">
+          <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 md:p-6">
+            <h3 className="text-base md:text-lg font-semibold text-yellow-900 dark:text-yellow-100 mb-2 md:mb-3">
               Nema dostupnih preporuka za odabrani period
             </h3>
-            <div className="text-sm text-yellow-800 dark:text-yellow-200 space-y-2">
+            <div className="text-xs md:text-sm text-yellow-800 dark:text-yellow-200 space-y-1 md:space-y-2">
               <p>
                 Ovo se obično dešava kada odabrani raspon datuma nema istorijske podatke u prethodnim godinama.
               </p>

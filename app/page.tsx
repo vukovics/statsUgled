@@ -18,41 +18,65 @@ export default async function Home() {
   const sales = await query<Sale>('SELECT * FROM sales ORDER BY datum DESC LIMIT 10');
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black p-8">
+    <div className="min-h-screen bg-zinc-50 dark:bg-black p-4 md:p-8">
       <main className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold text-black dark:text-white">
+        <div className="mb-6 md:mb-8">
+          <h1 className="text-2xl md:text-4xl font-bold text-black dark:text-white mb-4">
             Kontrolna tabla prodaje
           </h1>
-          <div className="flex gap-3">
+          <div className="grid grid-cols-2 md:flex md:flex-wrap gap-2 md:gap-3">
             <Link
               href="/product-analytics"
-              className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors font-medium"
+              className="px-3 py-2 md:px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors font-medium text-sm md:text-base text-center"
             >
-              Analitika proizvoda
+              Analitika
             </Link>
             <Link
               href="/sales-trends"
-              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors font-medium"
+              className="px-3 py-2 md:px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors font-medium text-sm md:text-base text-center"
             >
-              Trendovi prodaje
+              Trendovi
             </Link>
             <Link
               href="/top-items"
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+              className="px-3 py-2 md:px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium text-sm md:text-base text-center"
             >
-              Najprodavaniji artikli
+              Top artikli
             </Link>
             <Link
               href="/suggestions"
-              className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors font-medium"
+              className="px-3 py-2 md:px-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors font-medium text-sm md:text-base text-center"
             >
-              Preporuke za narudžbu
+              Preporuke
             </Link>
           </div>
         </div>
 
-        <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-lg overflow-hidden">
+        {/* Mobile Card View */}
+        <div className="md:hidden space-y-4">
+          {sales.map((sale) => (
+            <div key={sale.id} className="bg-white dark:bg-zinc-900 rounded-lg shadow p-4">
+              <div className="flex justify-between items-start mb-3">
+                <div className="flex-1">
+                  <div className="text-xs text-zinc-500 dark:text-zinc-400">#{sale.id}</div>
+                  <div className="font-semibold text-zinc-900 dark:text-zinc-100 text-sm">{sale.sifra_art}</div>
+                  <div className="text-sm text-zinc-700 dark:text-zinc-300 mt-1">{sale.naziv_art}</div>
+                </div>
+                <div className="text-right">
+                  <div className="text-lg font-bold text-green-600 dark:text-green-400">{sale.revenue.toFixed(2)} KM</div>
+                  <div className="text-xs text-zinc-500 dark:text-zinc-400">{sale.datum}</div>
+                </div>
+              </div>
+              <div className="flex justify-between text-sm border-t border-zinc-200 dark:border-zinc-700 pt-2">
+                <span className="text-zinc-600 dark:text-zinc-400">Količina: <span className="text-zinc-900 dark:text-zinc-100 font-medium">{sale.kolicina}</span></span>
+                <span className="text-zinc-600 dark:text-zinc-400">Cijena: <span className="text-zinc-900 dark:text-zinc-100 font-medium">{sale.cena.toFixed(2)} KM</span></span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop Table View */}
+        <div className="hidden md:block bg-white dark:bg-zinc-900 rounded-lg shadow-lg overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-zinc-100 dark:bg-zinc-800">
@@ -83,7 +107,7 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4">
           <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
             <h2 className="text-lg font-semibold mb-2 text-blue-900 dark:text-blue-100">Nedavne prodaje</h2>
             <p className="text-blue-800 dark:text-blue-200">
