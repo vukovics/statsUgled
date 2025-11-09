@@ -140,6 +140,12 @@ export default function SuggestionsPage() {
           </h1>
           <div className="flex gap-3">
             <Link
+              href="/sales-trends"
+              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors"
+            >
+              Trendovi prodaje
+            </Link>
+            <Link
               href="/top-items"
               className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
             >

@@ -26,6 +26,12 @@ export default async function Home() {
           </h1>
           <div className="flex gap-3">
             <Link
+              href="/sales-trends"
+              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors font-medium"
+            >
+              Trendovi prodaje
+            </Link>
+            <Link
               href="/top-items"
               className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
             >
@@ -71,7 +77,7 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
             <h2 className="text-lg font-semibold mb-2 text-blue-900 dark:text-blue-100">Nedavne prodaje</h2>
             <p className="text-blue-800 dark:text-blue-200">
@@ -79,6 +85,16 @@ export default async function Home() {
             </p>
             <p className="text-sm text-blue-700 dark:text-blue-300 mt-2">
               API endpoint: <code className="bg-blue-100 dark:bg-blue-800 px-2 py-1 rounded">/api/sales</code>
+            </p>
+          </div>
+
+          <div className="p-4 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
+            <h2 className="text-lg font-semibold mb-2 text-emerald-900 dark:text-emerald-100">Trendovi prodaje</h2>
+            <p className="text-emerald-800 dark:text-emerald-200">
+              Analiza prodaje po danima, sedmicama, mjesecima, godinama
+            </p>
+            <p className="text-sm text-emerald-700 dark:text-emerald-300 mt-2">
+              API endpoint: <code className="bg-emerald-100 dark:bg-emerald-800 px-2 py-1 rounded">/api/sales-trends</code>
             </p>
           </div>
 

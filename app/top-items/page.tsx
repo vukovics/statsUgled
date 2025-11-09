@@ -76,6 +76,12 @@ export default function TopItemsPage() {
           </h1>
           <div className="flex gap-3">
             <Link
+              href="/sales-trends"
+              className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors"
+            >
+              Trendovi prodaje
+            </Link>
+            <Link
               href="/suggestions"
               className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
             >
