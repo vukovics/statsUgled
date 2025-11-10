@@ -1,5 +1,9 @@
 import { query } from '@/lib/db';
 import Link from 'next/link';
+import SeasonalPatternsChart from '@/components/SeasonalPatternsChart';
+import BestSellersChart from '@/components/BestSellersChart';
+import SalesTrendsChart from '@/components/SalesTrendsChart';
+import LogoutButton from '@/components/LogoutButton';
 
 interface Sale {
   id: number;
@@ -21,9 +25,12 @@ export default async function Home() {
     <div className="min-h-screen bg-zinc-50 dark:bg-black p-4 md:p-8">
       <main className="max-w-7xl mx-auto">
         <div className="mb-6 md:mb-8">
-          <h1 className="text-2xl md:text-4xl font-bold text-black dark:text-white mb-4">
-            Kontrolna tabla prodaje
-          </h1>
+          <div className="flex justify-between items-center mb-4">
+            <h1 className="text-2xl md:text-4xl font-bold text-black dark:text-white">
+              Kontrolna tabla prodaje
+            </h1>
+            <LogoutButton />
+          </div>
           <div className="grid grid-cols-2 md:flex md:flex-wrap gap-2 md:gap-3">
             <Link
               href="/product-analytics"
@@ -51,6 +58,20 @@ export default async function Home() {
             </Link>
           </div>
         </div>
+
+        {/* Dashboard Charts */}
+        <div className="mb-6 md:mb-8 grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+          <SeasonalPatternsChart />
+          <BestSellersChart />
+        </div>
+
+        <div className="mb-6 md:mb-8">
+          <SalesTrendsChart />
+        </div>
+
+        <h2 className="text-xl md:text-2xl font-bold text-black dark:text-white mb-4">
+          Nedavne prodaje
+        </h2>
 
         {/* Mobile Card View */}
         <div className="md:hidden space-y-4">
