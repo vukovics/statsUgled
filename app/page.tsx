@@ -1,25 +1,11 @@
-import { query } from '@/lib/db';
 import Link from 'next/link';
 import SeasonalPatternsChart from '@/components/SeasonalPatternsChart';
 import BestSellersChart from '@/components/BestSellersChart';
 import SalesTrendsChart from '@/components/SalesTrendsChart';
+import TodayTrendsChart from '@/components/TodayTrendsChart';
 import LogoutButton from '@/components/LogoutButton';
 
-interface Sale {
-  id: number;
-  import_id: string;
-  import_timestamp: string;
-  sifra_art: string;
-  naziv_art: string;
-  kolicina: number;
-  cena: number;
-  datum: string;
-  datum_az: string;
-  revenue: number;
-}
-
 export default async function Home() {
-  const sales = await query<Sale>('SELECT * FROM sales ORDER BY datum DESC LIMIT 10');
 
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black p-4 md:p-8">
@@ -69,75 +55,11 @@ export default async function Home() {
           <SalesTrendsChart />
         </div>
 
-        <h2 className="text-xl md:text-2xl font-bold text-black dark:text-white mb-4">
-          Nedavne prodaje
-        </h2>
-
-        {/* Mobile Card View */}
-        <div className="md:hidden space-y-4">
-          {sales.map((sale) => (
-            <div key={sale.id} className="bg-white dark:bg-zinc-900 rounded-lg shadow p-4">
-              <div className="flex justify-between items-start mb-3">
-                <div className="flex-1">
-                  <div className="text-xs text-zinc-500 dark:text-zinc-400">#{sale.id}</div>
-                  <div className="font-semibold text-zinc-900 dark:text-zinc-100 text-sm">{sale.sifra_art}</div>
-                  <div className="text-sm text-zinc-700 dark:text-zinc-300 mt-1">{sale.naziv_art}</div>
-                </div>
-                <div className="text-right">
-                  <div className="text-lg font-bold text-green-600 dark:text-green-400">{sale.revenue.toFixed(2)} KM</div>
-                  <div className="text-xs text-zinc-500 dark:text-zinc-400">{sale.datum}</div>
-                </div>
-              </div>
-              <div className="flex justify-between text-sm border-t border-zinc-200 dark:border-zinc-700 pt-2">
-                <span className="text-zinc-600 dark:text-zinc-400">Količina: <span className="text-zinc-900 dark:text-zinc-100 font-medium">{sale.kolicina}</span></span>
-                <span className="text-zinc-600 dark:text-zinc-400">Cijena: <span className="text-zinc-900 dark:text-zinc-100 font-medium">{sale.cena.toFixed(2)} KM</span></span>
-              </div>
-            </div>
-          ))}
+        <div className="mb-6 md:mb-8">
+          <TodayTrendsChart />
         </div>
 
-        {/* Desktop Table View */}
-        <div className="hidden md:block bg-white dark:bg-zinc-900 rounded-lg shadow-lg overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-zinc-100 dark:bg-zinc-800">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">ID</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Šifra artikla</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Naziv artikla</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Količina</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Cijena</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Prihod</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Datum</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-zinc-200 dark:divide-zinc-700">
-                {sales.map((sale) => (
-                  <tr key={sale.id} className="hover:bg-zinc-50 dark:hover:bg-zinc-800">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-zinc-900 dark:text-zinc-100">{sale.id}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-zinc-900 dark:text-zinc-100">{sale.sifra_art}</td>
-                    <td className="px-6 py-4 text-sm text-zinc-900 dark:text-zinc-100">{sale.naziv_art}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-zinc-900 dark:text-zinc-100">{sale.kolicina}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-zinc-900 dark:text-zinc-100">{sale.cena.toFixed(2)} KM</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-zinc-900 dark:text-zinc-100">{sale.revenue.toFixed(2)} KM</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-zinc-900 dark:text-zinc-100">{sale.datum}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div className="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4">
-          <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-            <h2 className="text-lg font-semibold mb-2 text-blue-900 dark:text-blue-100">Nedavne prodaje</h2>
-            <p className="text-blue-800 dark:text-blue-200">
-              Prikazano {sales.length} najnovijih prodaja iz baze podataka
-            </p>
-            <p className="text-sm text-blue-700 dark:text-blue-300 mt-2">
-              API endpoint: <code className="bg-blue-100 dark:bg-blue-800 px-2 py-1 rounded">/api/sales</code>
-            </p>
-          </div>
+        <div className="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
 
           <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg">
             <h2 className="text-lg font-semibold mb-2 text-indigo-900 dark:text-indigo-100">Analitika proizvoda</h2>

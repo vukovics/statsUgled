@@ -18,11 +18,28 @@ export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
     const limit = searchParams.get('limit') || '10';
+    const startDate = searchParams.get('startDate');
+    const endDate = searchParams.get('endDate');
 
-    const sales = await query<Sale>(
-      'SELECT * FROM sales ORDER BY datum DESC LIMIT ?',
-      [parseInt(limit)]
-    );
+    let sql = 'SELECT * FROM sales';
+    const params: any[] = [];
+
+    // Add date filtering if provided
+    if (startDate && endDate) {
+      sql += ' WHERE datum >= ? AND datum <= ?';
+      params.push(startDate, endDate);
+    } else if (startDate) {
+      sql += ' WHERE datum >= ?';
+      params.push(startDate);
+    } else if (endDate) {
+      sql += ' WHERE datum <= ?';
+      params.push(endDate);
+    }
+
+    sql += ' ORDER BY datum DESC LIMIT ?';
+    params.push(parseInt(limit));
+
+    const sales = await query<Sale>(sql, params);
 
     return NextResponse.json({
       success: true,
