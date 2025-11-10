@@ -1,13 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 interface YearData {
   year: number;
   total_revenue: number;
   total_quantity: number;
   sale_count: number;
+  avg_per_sale: number;
 }
 
 export default function TodayTrendsChart() {
@@ -44,11 +45,14 @@ export default function TodayTrendsChart() {
             });
           }
 
+          const avg_per_sale = sale_count > 0 ? total_revenue / sale_count : 0;
+
           return {
             year,
             total_revenue,
             total_quantity,
-            sale_count
+            sale_count,
+            avg_per_sale
           };
         });
 
@@ -119,7 +123,7 @@ export default function TodayTrendsChart() {
       </div>
 
       <ResponsiveContainer width="100%" height={300}>
-        <BarChart data={data}>
+        <ComposedChart data={data}>
           <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
           <XAxis
             dataKey="year"
@@ -127,6 +131,7 @@ export default function TodayTrendsChart() {
             style={{ fontSize: '12px' }}
           />
           <YAxis
+            yAxisId="left"
             stroke="#9ca3af"
             style={{ fontSize: '12px' }}
             domain={[0, 4000]}
@@ -141,14 +146,15 @@ export default function TodayTrendsChart() {
               color: '#fff'
             }}
             formatter={(value: number, name: string) => {
-              if (name === 'total_revenue') return [`${value.toFixed(2)} KM`, 'Prihod'];
-              if (name === 'total_quantity') return [value.toFixed(2), 'Količina'];
+              if (name === 'total_revenue') return [`${value.toFixed(2)} KM`, 'Ukupan prihod'];
+              if (name === 'total_quantity') return [value.toFixed(2), 'Ukupna količina'];
               if (name === 'sale_count') return [value.toFixed(2), 'Broj prodaja'];
               return [value, name];
             }}
           />
           <Legend wrapperStyle={{ paddingTop: '20px' }} />
           <Bar
+            yAxisId="left"
             dataKey="total_revenue"
             fill="#3b82f6"
             name="Ukupan prihod"
@@ -159,7 +165,7 @@ export default function TodayTrendsChart() {
               style: { fontSize: '12px', fill: '#3b82f6', fontWeight: 'bold' }
             }}
           />
-        </BarChart>
+        </ComposedChart>
       </ResponsiveContainer>
     </div>
   );
