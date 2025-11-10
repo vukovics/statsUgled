@@ -161,7 +161,7 @@ export default function TodayTrendsChart() {
             radius={[8, 8, 0, 0]}
             label={{
               position: 'top',
-              formatter: (value: number) => `${value.toFixed(2)} KM`,
+              formatter: (value: any) => typeof value === 'number' ? `${value.toFixed(2)} KM` : '',
               style: { fontSize: '12px', fill: '#3b82f6', fontWeight: 'bold' }
             }}
           />
