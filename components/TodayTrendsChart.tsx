@@ -84,6 +84,7 @@ export default function TodayTrendsChart() {
   const totalRevenue = data.reduce((sum, item) => sum + item.total_revenue, 0);
   const totalQuantity = data.reduce((sum, item) => sum + item.total_quantity, 0);
   const totalSales = data.reduce((sum, item) => sum + item.sale_count, 0);
+  const avgRevenue = data.length > 0 ? totalRevenue / data.length : 0;
 
   return (
     <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-lg p-4 md:p-6">
@@ -91,7 +92,7 @@ export default function TodayTrendsChart() {
         Trendovi za današnji dan ({todayDate})
       </h2>
       <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
-        Prihod za današnji dan (2021-2024)
+        Prihod za današnji dan (2021-2024) | Prosječan prihod: {avgRevenue.toFixed(2)} KM
       </p>
 
       {/* Total Summary */}
