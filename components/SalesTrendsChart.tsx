@@ -13,6 +13,7 @@ interface TrendData {
 
 export default function SalesTrendsChart() {
   const [data, setData] = useState<TrendData[]>([]);
+  const [avgRevenue, setAvgRevenue] = useState<number>(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -32,6 +33,11 @@ export default function SalesTrendsChart() {
         const result = await response.json();
         if (result.success) {
           setData(result.data);
+          // Calculate average revenue
+          if (result.data.length > 0) {
+            const totalRevenue = result.data.reduce((sum: number, item: TrendData) => sum + item.total_revenue, 0);
+            setAvgRevenue(totalRevenue / result.data.length);
+          }
         }
       } catch (error) {
         console.error('Failed to fetch sales trends:', error);
@@ -62,7 +68,7 @@ export default function SalesTrendsChart() {
         Trendovi prodaje
       </h2>
       <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
-        Mjesečni prihod (1.1.2024 - 31.12.2025)
+        Mjesečni prihod (1.1.2024 - 31.12.2025) | Prosječan prihod: {avgRevenue.toFixed(2)} KM
       </p>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data}>

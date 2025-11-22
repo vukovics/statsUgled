@@ -57,6 +57,7 @@ export async function GET(request: NextRequest) {
     const endDate = searchParams.get('endDate') || '2024-10-31';
     const limit = parseInt(searchParams.get('limit') || '50');
     const minSales = parseInt(searchParams.get('minSales') || '10');
+    const sortBy = searchParams.get('sortBy') || 'quantity'; // quantity or revenue
 
     // Helper to build date filter
     const dateFilter = `
@@ -70,6 +71,7 @@ export async function GET(request: NextRequest) {
 
     if (analysisType === 'best-sellers') {
       // Get best-selling products with performance metrics
+      const orderByColumn = sortBy === 'revenue' ? 'total_revenue' : 'total_quantity';
       const bestSellersQuery = `
         SELECT
           sifra_art,
@@ -87,7 +89,7 @@ export async function GET(request: NextRequest) {
         ${dateFilter}
         GROUP BY sifra_art, naziv_art
         HAVING sale_count >= ?
-        ORDER BY total_revenue DESC
+        ORDER BY ${orderByColumn} DESC
         LIMIT ?
       `;
 

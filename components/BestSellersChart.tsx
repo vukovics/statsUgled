@@ -15,11 +15,12 @@ interface ProductPerformance {
 export default function BestSellersChart() {
   const [data, setData] = useState<ProductPerformance[]>([]);
   const [loading, setLoading] = useState(true);
+  const [sortBy, setSortBy] = useState<'quantity' | 'revenue'>('quantity');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/product-analytics?type=best-sellers&limit=10');
+        const response = await fetch(`/api/product-analytics?type=best-sellers&limit=40&sortBy=${sortBy}`);
         const result = await response.json();
         if (result.success) {
           setData(result.data);
@@ -32,7 +33,7 @@ export default function BestSellersChart() {
     };
 
     fetchData();
-  }, []);
+  }, [sortBy]);
 
   if (loading) {
     return (
@@ -57,13 +58,24 @@ export default function BestSellersChart() {
 
   return (
     <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-lg p-4 md:p-6">
-      <h2 className="text-lg md:text-xl font-semibold mb-4 text-black dark:text-white">
-        Najprodavaniji
-      </h2>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-lg md:text-xl font-semibold text-black dark:text-white">
+          Najprodavaniji
+        </h2>
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value as 'quantity' | 'revenue')}
+          className="px-3 py-1 text-sm border border-zinc-300 dark:border-zinc-700 rounded-lg bg-white dark:bg-zinc-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500"
+        >
+          <option value="quantity">Po količini</option>
+          <option value="revenue">Po prihodu</option>
+        </select>
+      </div>
       <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
-        Top 10 artikala po prihodu
+        Top 40 artikala po {sortBy === 'quantity' ? 'količini' : 'prihodu'} od 2021 do 2024 godine
       </p>
-      <ResponsiveContainer width="100%" height={300}>
+      <div className="overflow-y-auto max-h-[600px]">
+        <ResponsiveContainer width="100%" height={1600}>
         <BarChart data={chartData} layout="vertical">
           <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
           <XAxis
@@ -87,6 +99,9 @@ export default function BestSellersChart() {
               color: '#fff'
             }}
             formatter={(value: number, name: string) => {
+              if (name === 'Količina') {
+                return [`${value.toFixed(2)}`, name];
+              }
               if (name === 'Prihod') {
                 return [`${value.toFixed(2)} KM`, name];
               }
@@ -98,9 +113,15 @@ export default function BestSellersChart() {
             }}
           />
           <Legend wrapperStyle={{ paddingTop: '20px' }} />
-          <Bar dataKey="total_revenue" fill="#10b981" name="Prihod" radius={[0, 8, 8, 0]} />
+          <Bar
+            dataKey={sortBy === 'quantity' ? 'total_quantity' : 'total_revenue'}
+            fill="#10b981"
+            name={sortBy === 'quantity' ? 'Količina' : 'Prihod'}
+            radius={[0, 8, 8, 0]}
+          />
         </BarChart>
       </ResponsiveContainer>
+      </div>
     </div>
   );
 }

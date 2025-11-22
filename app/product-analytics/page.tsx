@@ -342,7 +342,7 @@ export default function ProductAnalyticsPage() {
                 Najprodavaniji proizvodi
               </h2>
               <p className="text-xs md:text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-                Sortirano po ukupnom prihodu
+                Sortirano po ukupnoj količini
               </p>
             </div>
             <div className="overflow-x-auto touch-pan-x">
