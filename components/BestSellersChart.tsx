@@ -20,7 +20,7 @@ export default function BestSellersChart() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`/api/product-analytics?type=best-sellers&limit=40&sortBy=${sortBy}`);
+        const response = await fetch(`/api/product-analytics?type=best-sellers&limit=100&sortBy=${sortBy}`);
         const result = await response.json();
         if (result.success) {
           setData(result.data);
@@ -72,10 +72,10 @@ export default function BestSellersChart() {
         </select>
       </div>
       <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
-        Top 40 artikala po {sortBy === 'quantity' ? 'količini' : 'prihodu'} od 2021 do 2024 godine
+        Top 100 artikala po {sortBy === 'quantity' ? 'količini' : 'prihodu'} od 2021 do 2024 godine
       </p>
       <div className="overflow-y-auto max-h-[600px]">
-        <ResponsiveContainer width="100%" height={1600}>
+        <ResponsiveContainer width="100%" height={4000}>
         <BarChart data={chartData} layout="vertical">
           <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
           <XAxis
