@@ -186,7 +186,7 @@ export default function SuggestionsPage() {
               <strong>Korak 4:</strong> Na osnovu istorijskih obrazaca, predlaže koliko trebate naručiti za odabrani budući period.
             </p>
             <div className="text-xs mt-3 bg-amber-100 dark:bg-amber-900/30 p-2 rounded border border-amber-300 dark:border-amber-700">
-              <strong>⚠️ Važno:</strong> Baza podataka sadrži podatke o prodaji od <strong>1. februar 2021. do 31. oktobar 2024</strong>.
+              <strong>⚠️ Važno:</strong> Baza podataka sadrži podatke o prodaji od <strong>1. februar 2021. do 31. oktobar 2025</strong>.
               <br/>• Najbolji rezultati: Odaberite datume gdje postoje istorijski podaci (npr. periodi februar-oktobar)
               <br/>• Djelimični rezultati: Neke godine mogu nedostajati ako raspon datuma prelazi 31. oktobar
             </div>
@@ -317,7 +317,7 @@ export default function SuggestionsPage() {
               </div>
               {analysis.years_with_data < analysis.years_analyzed && (
                 <p className="text-xs text-amber-600 dark:text-amber-400 mt-3">
-                  ⚠️ Neke godine nemaju podatke za ovaj period. To se može desiti ako raspon datuma prelazi dostupne podatke (baza ima podatke do 31. oktobra 2024).
+                  ⚠️ Neke godine nemaju podatke za ovaj period. To se može desiti ako raspon datuma prelazi dostupne podatke (baza ima podatke do 31. oktobra 2025).
                 </p>
               )}
             </div>
@@ -469,10 +469,10 @@ export default function SuggestionsPage() {
               <ul className="list-disc list-inside ml-4 space-y-1">
                 <li>Datumi između februara i oktobra (bilo koja godina)</li>
                 <li>Držite dane predviđanja ≤ 10 da ne prelazite 31. oktobar</li>
-                <li>Primjer: Odaberite 20. okt 2024. sa 10 dana → dobijate podatke iz 2020-2023</li>
+                <li>Primjer: Odaberite 20. okt 2025. sa 10 dana → dobijate podatke iz 2021-2024</li>
               </ul>
               <p className="mt-3 text-xs">
-                <strong>Raspon baze podataka:</strong> 1. februar 2021. do 31. oktobar 2024.
+                <strong>Raspon baze podataka:</strong> 1. februar 2021. do 31. oktobar 2025.
               </p>
             </div>
           </div>

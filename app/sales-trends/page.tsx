@@ -47,7 +47,7 @@ type PeriodType = 'daily' | 'weekly' | 'monthly' | 'yearly';
 export default function SalesTrendsPage() {
   const [period, setPeriod] = useState<PeriodType>('monthly');
   const [startDate, setStartDate] = useState<string>('2021-02-01');
-  const [endDate, setEndDate] = useState<string>('2024-10-31');
+  const [endDate, setEndDate] = useState<string>('2025-10-31');
   const [data, setData] = useState<ApiResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

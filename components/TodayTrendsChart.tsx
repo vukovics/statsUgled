@@ -24,8 +24,8 @@ export default function TodayTrendsChart() {
         const day = String(today.getDate()).padStart(2, '0');
         setTodayDate(`${day}.${month}`);
 
-        // Get data for today's date for years 2021-2024
-        const years = [2021, 2022, 2023, 2024];
+        // Get data for today's date for years 2021-2025
+        const years = [2021, 2022, 2023, 2024, 2025];
 
         const yearDataPromises = years.map(async (year) => {
           // Format date as DD.MM.YYYY to match database format
@@ -92,7 +92,7 @@ export default function TodayTrendsChart() {
         Trendovi za današnji dan ({todayDate})
       </h2>
       <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
-        Prihod za današnji dan (2021-2024) | Prosječan prihod: {avgRevenue.toFixed(2)} KM
+        Prihod za današnji dan (2021-2025) | Prosječan prihod: {avgRevenue.toFixed(2)} KM
       </p>
 
       {/* Total Summary */}

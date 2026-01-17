@@ -72,7 +72,7 @@ export default function BestSellersChart() {
         </select>
       </div>
       <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
-        Top 100 artikala po {sortBy === 'quantity' ? 'količini' : 'prihodu'} od 2021 do 2024 godine
+        Top 100 artikala po {sortBy === 'quantity' ? 'količini' : 'prihodu'} od 2021 do 2025 godine
       </p>
       <div className="overflow-y-auto max-h-[600px]">
         <ResponsiveContainer width="100%" height={4000}>
