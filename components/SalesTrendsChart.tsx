@@ -24,7 +24,7 @@ export default function SalesTrendsChart() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const years = [2025, 2024];
+        const years = [2025, 2024, 2023];
         const results: YearData[] = [];
 
         for (const year of years) {
@@ -74,7 +74,7 @@ export default function SalesTrendsChart() {
     );
   }
 
-  const colors = ['#8b5cf6', '#10b981'];
+  const colors = ['#8b5cf6', '#10b981', '#f59e0b'];
 
   return (
     <div className="space-y-6">
