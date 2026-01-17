@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 
 interface TopItem {
   sifra_art: string;
@@ -71,35 +70,9 @@ export default function TopItemsPage() {
     <div className="min-h-screen bg-zinc-50 dark:bg-black p-4 md:p-8">
       <main className="max-w-7xl mx-auto">
         <div className="mb-6 md:mb-8">
-          <h1 className="text-2xl md:text-4xl font-bold text-black dark:text-white mb-4">
+          <h1 className="text-2xl md:text-4xl font-bold text-black dark:text-white">
             Najprodavaniji artikli
           </h1>
-          <div className="grid grid-cols-2 md:flex md:flex-wrap gap-2 md:gap-3">
-            <Link
-              href="/product-analytics"
-              className="px-3 py-2 md:px-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors text-sm md:text-base text-center"
-            >
-              Analitika
-            </Link>
-            <Link
-              href="/sales-trends"
-              className="px-3 py-2 md:px-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors text-sm md:text-base text-center"
-            >
-              Trendovi
-            </Link>
-            <Link
-              href="/suggestions"
-              className="px-3 py-2 md:px-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors text-sm md:text-base text-center"
-            >
-              Preporuke
-            </Link>
-            <Link
-              href="/"
-              className="px-3 py-2 md:px-4 bg-zinc-800 dark:bg-zinc-700 text-white rounded-lg hover:bg-zinc-700 dark:hover:bg-zinc-600 transition-colors text-sm md:text-base text-center"
-            >
-              Početna
-            </Link>
-          </div>
         </div>
 
         <div className="mb-4 md:mb-6 flex flex-col md:flex-row md:items-center gap-3 md:gap-4">
