@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
     const analysisType = searchParams.get('type') || 'overview'; // overview, best-sellers, slow-movers, seasonal
-    const startDate = searchParams.get('startDate') || '2021-02-01';
+    const startDate = searchParams.get('startDate') || '2024-01-01';
     const endDate = searchParams.get('endDate') || '2025-10-31';
     const limit = parseInt(searchParams.get('limit') || '50');
     const minSales = parseInt(searchParams.get('minSales') || '10');

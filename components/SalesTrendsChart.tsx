@@ -19,8 +19,8 @@ export default function SalesTrendsChart() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Get data from 1.1.2024 to 31.10.2025
-        const startDate = '2024-01-01';
+        // Get data for 2025
+        const startDate = '2025-01-01';
         const endDate = '2025-10-31';
 
         const params = new URLSearchParams({
@@ -68,7 +68,7 @@ export default function SalesTrendsChart() {
         Trendovi prodaje
       </h2>
       <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-4">
-        Mjesečni prihod (1.1.2024 - 31.10.2025) | Prosječan prihod: {avgRevenue.toFixed(2)} KM
+        Mjesečni prihod (2025) | Prosječan prihod: {avgRevenue.toFixed(2)} KM
       </p>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data}>

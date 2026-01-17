@@ -52,7 +52,7 @@ type ViewMode = 'overview' | 'best-sellers' | 'slow-movers' | 'seasonal';
 
 export default function ProductAnalyticsPage() {
   const [viewMode, setViewMode] = useState<ViewMode>('overview');
-  const [startDate, setStartDate] = useState<string>('2021-02-01');
+  const [startDate, setStartDate] = useState<string>('2024-01-01');
   const [endDate, setEndDate] = useState<string>('2025-10-31');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
